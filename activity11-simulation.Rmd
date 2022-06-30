@@ -127,6 +127,21 @@ This function should produce a dataset with `n` rows.
 You should **not** use the default parameter options for these distributions (e.g., your Normal data should not have a mean of 0 or a standard deviation of 1).
 Test your function with `n = 30` and `n = 1000`.
 
+```{r Creating Function}
+generate_n_samples <- function(n){
+  tibble(
+  Normal = rnorm(n,mean=10,sd=5),
+  Exponential = rexp(n, rate=2.5),
+  Chi_square = rchisq(n, df=55, ncp= 12.5),
+  Uniform = runif(n, min= 5, max=25)
+  )
+}
+```
+
+```{r Testing Function}
+Multiple_Samples_1000 <- generate_n_samples(n=1000)
+Multiple_Samples_30 <- generate_n_samples(n=30)
+```
 
 
 
@@ -144,10 +159,10 @@ These are the "population values".
 
 | Distribution | Mean       | SD         |
 |--------------|------------|------------|
-| Normal       |            |            |
-| Exponential  |            |            |
-| Chi-square   |            |            |
-| Uniform      |            |            |
+| Normal       |    10      |    5       |
+| Exponential  |    0.4     |   0.4      |
+| Chi-square   |    55      |   10.488   |
+| Uniform      |    15      |   5.77     |
 
 
 Below I provide you with a function that calculates the sample mean for each column/distribution.
@@ -164,8 +179,12 @@ Then, use this function in addition to your multiple distribution sample generat
 Discuss how the means compares for each distribution.
 Note that it doesn't make sense to compare means/standard deviations across the distributions.
 
+```{r Mean with function}
+Mean_1000 <- sample_mean(.data = Multiple_Samples_1000)
+Mean_30 <- sample_mean(.data = Multiple_Samples_30)                    
+#Means with a larger sample are going to be more accurate, than means of 30                     
 
-
+```
 
 ## Many samples
 
