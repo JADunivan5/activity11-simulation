@@ -173,7 +173,9 @@ rows.
 You should **not** use the default parameter options for these
 distributions (e.g., your Normal data should not have a mean of 0 or a
 standard deviation of 1). Test your function with `n = 30` and
-`n = 1000`. \#\# Creating Function
+`n = 1000`.
+
+## Creating Function
 
 ``` r
 generate_n_samples <- function(n){
